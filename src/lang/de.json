@@ -1,0 +1,9 @@
+{
+    "simpleText": "Das ist ein einfacher Text auf Deutsch. (Fallback)",
+    "deeply": {
+      "nested": {
+        "text": "Diese Übersetzung kommt aus einem verschachteltem Schlüssel. (Fallback)"
+      }
+    },
+    "textWithVariable": "Diese Übersetzung verwendet eine Variable: {{date}}. Diese Variable kann auch ein anderes Format haben, wie z. B. {{date|date:'dd.MM.yyyy'}} (Fallback)"
+}
