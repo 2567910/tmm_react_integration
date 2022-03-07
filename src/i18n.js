@@ -4,8 +4,8 @@ import LanguageDetector from 'i18next-browser-languagedetector';
 import axios from 'axios'
 import HttpApi from 'i18next-http-backend';
 
-axios.defaults.baseURL = 'https://tmm.azure.blu-beyond.com/translations/test_final'
-axios.defaults.timeout = 500
+axios.defaults.baseURL = 'https://tmm.azure.blu-beyond.com/translations/api_performance_test/'
+axios.defaults.timeout = 5000
 let fallbackResourcesPath = './lang'
 
 axios.defaults.headers = {
@@ -27,7 +27,11 @@ let options = {
   loadPath: '/{{lng}}',
   request: (options, url, payload, callback) => {
     const [lng] = url.split('|');
-    const fallbackJSON = require(fallbackResourcesPath + lng + '.json');
+
+    let fallbackJSON = fallbackResourcesPath + 'en.json'
+    if(!lng.includes("-")){
+      fallbackJSON = require(fallbackResourcesPath + lng + '.json');
+    }
 
     getTranslationsFromServer(lng).then((response) => {
       callback(null, {
